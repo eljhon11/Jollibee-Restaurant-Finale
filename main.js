@@ -69,7 +69,7 @@ function initializeDefaultMenu() {
             category: "Chicken",
             price: 95.00,
             description: "Crispylicious, Juicylicious Chickenjoy that is crispy on the outside, tender and juicy on the inside.",
-            image: "1pc chicken.jpg",
+            image: "1pc chicken.jpg", // Updated path
             available: true
         },
         {
@@ -78,7 +78,7 @@ function initializeDefaultMenu() {
             category: "Chicken",
             price: 175.00,
             description: "Crispylicious, Juicylicious Chickenjoy that is crispy on the outside, tender and juicy on the inside.",
-            image: "https://www.jollibee.com.ph/wp-content/uploads/2022/07/2pc-Chickenjoy-Solo.png",
+            image: "./images/2pc-chickenjoy.png", // Updated path
             available: true
         },
         {
@@ -87,7 +87,7 @@ function initializeDefaultMenu() {
             category: "Burger",
             price: 45.00,
             description: "100% pure beef patty with special dressing on a fresh bun.",
-            image: "yumburger.jpg",
+            image: "yumburger.jpg", // Updated path
             available: true
         },
         {
@@ -96,7 +96,7 @@ function initializeDefaultMenu() {
             category: "Rice Meals",
             price: 85.00,
             description: "Sweet-style spaghetti with ground meat, hotdog chunks, and cheese.",
-            image: "spag.jpg",
+            image: "spag.jpg", // Updated path
             available: true
         },
         {
@@ -105,7 +105,7 @@ function initializeDefaultMenu() {
             category: "Desserts",
             price: 39.00,
             description: "Crispy pie crust filled with real peach and mango chunks.",
-            image: "peach.jpg",
+            image: "peach.jpg", // Updated path
             available: true
         },
         {
@@ -114,7 +114,7 @@ function initializeDefaultMenu() {
             category: "Sides",
             price: 45.00,
             description: "Crispy and flavorful fries.",
-            image: "https://www.jollibee.com.ph/wp-content/uploads/2022/07/Jolly-Crispy-Fries-Regular-500x500.png",
+            image: "./images/jolly-crispy-fries.png", // Updated path
             available: true
         },
         {
@@ -123,7 +123,7 @@ function initializeDefaultMenu() {
             category: "Beverages",
             price: 35.00,
             description: "Refreshing Coca-Cola soda.",
-            image: "https://www.jollibee.com.ph/wp-content/uploads/2022/07/Coke-Regular-500x500.png",
+            image: "./images/coke-regular.png", // Updated path
             available: true
         },
         {
@@ -132,7 +132,7 @@ function initializeDefaultMenu() {
             category: "Rice Meals",
             price: 120.00,
             description: "Filipino noodle dish with shrimp sauce, ground meat, and toppings.",
-            image: "https://www.jollibee.com.ph/wp-content/uploads/2022/07/Palabok-Family-Pan-500x500.png",
+            image: "./images/palabok-family-pan.png", // Updated path
             available: true
         }
     ];
