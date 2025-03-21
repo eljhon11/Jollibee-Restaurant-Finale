@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jollibee Restaurant System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Jollibee_Logo__Horizontal__ID_a6652feaf0c8_Logo.jpg">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="Jollibee.jpg" alt="Jollibee Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Jollibee</h1>
+                <p>Home of the Famous Chickenjoy and Yumburger!</p>
+                <a href="menu.html" class="btn">Order Now</a>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="product-grid" id="featured-items">
+                <!-- Featured products will be loaded here via JavaScript -->
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>About Jollibee</h2>
+            <p>Jollibee is a Filipino multinational chain of fast food restaurants owned by Jollibee Foods Corporation. It serves burgers, spaghetti, chicken, and some local Filipino dishes.</p>
+            <p>Known for its friendly mascot and delicious Chickenjoy, Jollibee has become a beloved brand in the Philippines and around the world.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +63 2 8887 7000</p>
+                <p><i class="fas fa-envelope"></i> customercare@jollibee.com.ph</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Store Hours</h3>
+                <p>Monday - Sunday: 7:00 AM - 10:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Jollibee Restaurant System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>

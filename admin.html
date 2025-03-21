@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Jollibee Restaurant System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="Jollibee.jpg" alt="Jollibee Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+                <li><a href="admin.html" class="active">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-panel">
+            <h1>Admin Panel</h1>
+            
+            <div class="admin-login" id="admin-login">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+            
+            <div class="admin-dashboard" id="admin-dashboard" style="display: none;">
+                <div class="admin-sidebar">
+                    <ul>
+                        <li><a href="#" class="active" data-tab="orders">Orders</a></li>
+                        <li><a href="#" data-tab="menu-management">Menu Management</a></li>
+                        <li><a href="#" data-tab="inventory">Inventory</a></li>
+                        <li><a href="#" data-tab="sales-report">Sales Report</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </div>
+                
+                <div class="admin-content">
+                    <div class="admin-tab" id="orders-tab">
+                        <h2>Orders Management</h2>
+                        <div class="order-filters">
+                            <select id="order-status-filter">
+                                <option value="all">All Orders</option>
+                                <option value="pending">Pending</option>
+                                <option value="preparing">Preparing</option>
+                                <option value="ready">Ready</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <input type="date" id="order-date-filter">
+                            <button class="btn" id="filter-orders-btn">Filter</button>
+                        </div>
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table-body">
+                                <!-- Orders will be loaded here via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="admin-tab" id="menu-management-tab" style="display: none;">
+                        <h2>Menu Management</h2>
+                        <button class="btn" id="add-menu-item-btn">Add New Item</button>
+                        <table class="menu-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="menu-table-body">
+                                <!-- Menu items will be loaded here via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="admin-tab" id="inventory-tab" style="display: none;">
+                        <h2>Inventory Management</h2>
+                        <button class="btn" id="add-inventory-item-btn">Add New Item</button>
+                        <table class="inventory-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-table-body">
+                                <!-- Inventory items will be loaded here via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="admin-tab" id="sales-report-tab" style="display: none;">
+                        <h2>Sales Report</h2>
+                        <div class="report-filters">
+                            <div class="form-group">
+                                <label for="report-start-date">Start Date:</label>
+                                <input type="date" id="report-start-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="report-end-date">End Date:</label>
+                                <input type="date" id="report-end-date">
+                            </div>
+                            <button class="btn" id="generate-report-btn">Generate Report</button>
+                            <button class="btn" id="export-report-btn">Export to CSV</button>
+                        </div>
+                        
+                        <div class="report-summary">
+                            <div class="summary-card">
+                                <h3>Total Sales</h3>
+                                <p id="total-sales">₱0.00</p>
+                            </div>
+                            <div class="summary-card">
+                                <h3>Total Orders</h3>
+                                <p id="total-orders">0</p>
+                            </div>
+                            <div class="summary-card">
+                                <h3>Average Order Value</h3>
+                                <p id="avg-order-value">₱0.00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-charts">
+                            <div class="chart-container">
+                                <h3>Daily Sales</h3>
+                                <canvas id="daily-sales-chart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h3>Top Selling Items</h3>
+                                <canvas id="top-items-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="report-table-container">
+                            <h3>Detailed Sales</h3>
+                            <table class="report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Order ID</th>
+                                        <th>Items</th>
+                                        <th>Total</th>
+                                        <th>Payment Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="report-table-body">
+                                    <!-- Report data will be loaded here via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add Menu Item Modal -->
+        <div id="add-menu-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Add Menu Item</h2>
+                <form id="add-menu-form">
+                    <div class="form-group">
+                        <label for="menu-name">Name:</label>
+                        <input type="text" id="menu-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu-category">Category:</label>
+                        <select id="menu-category" required>
+                            <option value="Chicken">Chicken</option>
+                            <option value="Burger">Burger</option>
+                            <option value="Rice Meals">Rice Meals</option>
+                            <option value="Sides">Sides</option>
+                            <option value="Desserts">Desserts</option>
+                            <option value="Beverages">Beverages</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu-price">Price (₱):</label>
+                        <input type="number" id="menu-price" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu-description">Description:</label>
+                        <textarea id="menu-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="menu-image">Image URL:</label>
+                        <input type="text" id="menu-image">
+                    </div>
+                    <button type="submit" class="btn">Add Item</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Add Inventory Item Modal -->
+        <div id="add-inventory-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Add Inventory Item</h2>
+                <form id="add-inventory-form">
+                    <div class="form-group">
+                        <label for="inventory-name">Item Name:</label>
+                        <input type="text" id="inventory-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventory-quantity">Quantity:</label>
+                        <input type="number" id="inventory-quantity" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventory-unit">Unit:</label>
+                        <input type="text" id="inventory-unit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventory-reorder">Reorder Level:</label>
+                        <input type="number" id="inventory-reorder" min="0" required>
+                    </div>
+                    <button type="submit" class="btn">Add Item</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +63 2 8887 7000</p>
+                <p><i class="fas fa-envelope"></i> customercare@jollibee.com.ph</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Store Hours</h3>
+                <p>Monday - Sunday: 7:00 AM - 10:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Jollibee Restaurant System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
