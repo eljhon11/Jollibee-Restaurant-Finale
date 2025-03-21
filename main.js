@@ -87,7 +87,7 @@ function initializeDefaultMenu() {
             category: "Burger",
             price: 45.00,
             description: "100% pure beef patty with special dressing on a fresh bun.",
-            image: "yumburger.jpg", // Updated path
+            image: "https://th.bing.com/th/id/OIP.nrO7enNZ6Tc_OhIud4prBQHaDs?rs=1&pid=ImgDetMain", // Updated path
             available: true
         },
         {
